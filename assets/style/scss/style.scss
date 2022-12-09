@@ -74,10 +74,16 @@ header nav {
 
         & li {
             text-align: center;
-            font-family: $mediumFont;
 
-            &:hover {
-                color: $primaryColor;
+            & a {
+                font-family: $mediumFont;
+                color: black;
+                text-decoration: none;
+
+                &:hover {
+                    color: $primaryColor;
+                    cursor: pointer;
+                }
             }
         }
 
@@ -98,6 +104,10 @@ main section {
     width: 100%;
     min-height: 100vh;
     max-height: max-content;
+
+    &:nth-child(n+2) {
+        margin-bottom: 50px
+    }
 
     &#heroSection {
         @include flexCenter();
@@ -130,12 +140,14 @@ main section {
 
     &#advicesSection {
         display: grid;
-        grid-template-rows: .2fr 1fr;
+        grid-template-rows: auto 1fr;
         place-items: center;
         text-align: center;
 
         & h1 {
-            color: $primaryColor;
+            color: $whiteElement;
+            background-color: $primaryColor;
+            padding-block: 1rem
         }
 
         & .cardContainer {
@@ -144,6 +156,128 @@ main section {
             justify-content: space-around;
             height: 100%;
             padding-inline: 1rem;
+
+            & .card {
+                @include flexCenter();
+                flex-direction: column;
+                gap: 10px;
+                border-radius: 10px;
+                color: $primaryColor;
+
+                &:nth-child(even) {
+                    background-color: $primaryColor;
+                    color: $whiteElement;
+                    padding-block: 1rem;
+                }
+            }
         }
+    }
+
+
+
+    &#solutionsSection {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        text-align: center;
+        gap: 20px;
+        padding: 1rem;
+
+        & h1 {
+            color: $primaryColor;
+        }
+
+        & .solutionsContainer {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 40px;
+
+            & * {
+                @include flexCenter();
+                flex-direction: column;
+                justify-content: space-between;
+                border-radius: 15px;
+                color: $primaryColor;
+                height: 100%;
+
+                & h2 {
+                    @include flexCenter();
+                    color: $primaryColor;
+                    background-position: center;
+                    border-bottom-right-radius: 0;
+                    border-bottom-left-radius: 0;
+                    padding-block: 1.5em;
+                }
+
+                & p {
+                    color: white;
+                    border-top-right-radius: 0;
+                    border-top-left-radius: 0;
+                    background: $primaryColor;
+                    padding: 1rem;
+                }
+            }
+
+            & .pannel h2 {
+                background-image: url(/assets/images/solarePannel.png);
+
+            }
+
+            & .isolation h2 {
+                background-image: url(/assets/images/isolation.jpg);
+            }
+
+            & .battery h2 {
+                background-image: url(/assets/images/battery.jpg);
+                background-size: 100%;
+            }
+
+        }
+    }
+}
+
+
+
+/* #FOOTER ---------------------------------------------- */
+
+
+footer {
+    @include flexCenter();
+    flex-direction: column;
+    row-gap: 15px;
+    background-color: $primaryColor;
+    color: $whiteElement;
+    padding: 1.5rem;
+    margin-block-start: 50px;
+
+    & .titleFooter {
+        display: grid;
+        grid-template-columns: .5fr 1fr;
+        grid-template-rows: repeat(2, min-content);
+        grid-area: 1 / 1 / 2 / 2;
+
+        & h1 {
+            grid-area: 1 / 1 / 3 / 2;
+            font-size: clamp(20px, 15vw, 100px);
+            color: transparent;
+            -webkit-text-stroke: 0.5px white;
+        }
+
+        & h2 {
+            grid-area: 1 / 2 / 2 / 3;
+            font-size: clamp(16px, 5vw, 30px);
+            width: fit-content;
+        }
+
+        & p {
+            grid-area: 2 / 2 / 3 / 3;
+            width: fit-content;
+        }
+    }
+
+    & .allRight {
+        grid-area: 2 / 1 / 3 / 3;
+        text-align: center;
+        font-size: clamp(13px, 3vw, 4vw);
+        font-family: $boldFont;
     }
 }
