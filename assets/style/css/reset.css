@@ -6,6 +6,13 @@
   box-sizing: border-box;
 }
 
+li{
+    list-style-type: none;
+}
+li:hover{
+    cursor: pointer;
+}
+
 svg,
 img,
 video {
